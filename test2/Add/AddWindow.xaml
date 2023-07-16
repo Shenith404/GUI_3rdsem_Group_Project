@@ -1,0 +1,132 @@
+﻿<Window x:Class="test2.Add.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:test2.Add" xmlns:shell="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="AliceBlue"
+        Title="AddWindow" Height="{Binding Height,Mode=TwoWay}" Width="{Binding Width,Mode=TwoWay}">
+    <Window.DataContext>
+        <local:AddWindowVM/>
+    </Window.DataContext>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    <WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="30"
+                            CornerRadius="20,20,20,20"
+                            GlassFrameThickness="0"
+                            UseAeroCaptionButtons="False" />
+    </WindowChrome.WindowChrome>
+
+    <Border CornerRadius="20" Background="White" Margin="20">
+        <Grid >
+            <StackPanel HorizontalAlignment="Right">
+                <Button Command="{Binding CloseCommand}" Style="{StaticResource ButtonStyle_Close}">x</Button>
+            </StackPanel>
+            <StackPanel >
+                <TextBlock Text="{Binding Title}" Margin=" 10" Width="150" TextAlignment="Center" />
+                <StackPanel Visibility="{Binding IsUser,Converter={StaticResource BooleanToVisibilityConverter}}" x:Name="User"  HorizontalAlignment="Center" Orientation="Vertical">
+                    <TextBlock Text="Username" Width="150"/>
+                    <TextBox Style="{StaticResource texbox_style_1}" Text="{Binding UserName}" />
+                    <TextBlock Style="{StaticResource texblock_style_1}" Text="Password" Width="150"/>
+                    <TextBox Style="{StaticResource texbox_style_1}" Text="{Binding Password}" />
+
+                    <CheckBox  Margin="2 7 0 0"
+                                     IsChecked="{Binding Isrole}"
+                                     Content="Admin" HorizontalContentAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+
+                    <Button Style="{StaticResource ButtonStyle_Add}" Content="Save" Margin="10" Command="{Binding AdduserCommand}" />
+                </StackPanel>
+
+
+                <StackPanel Visibility="{Binding Isstudent,Converter={StaticResource BooleanToVisibilityConverter}}"  x:Name="Student"  HorizontalAlignment="Center" Orientation="Vertical">
+                    <TextBlock Style="{StaticResource texblock_style_1}" Text="Student RegNo" />
+                    <TextBox Style="{StaticResource texbox_style_1}" IsEnabled="False" Text="{Binding RegNostring}" />
+
+                    <TextBlock Style="{StaticResource texblock_style_1}" Text="Student Name" />
+                    <TextBox Style="{StaticResource texbox_style_1}" Text="{Binding UserName}" />
+                    <TextBlock  Style="{StaticResource texblock_style_1}" Text="Email" />
+                    <TextBox  Style="{StaticResource texbox_style_1}" Text="{Binding Email}" />
+
+
+                    <Button Style="{StaticResource ButtonStyle_Add}" Content="Save" Margin="10"  Command="{Binding AddStudentCommand}" />
+
+                    <StackPanel>
+                        <StackPanel Visibility="{Binding IsUpdateMenu,Converter={StaticResource BooleanToVisibilityConverter}}" Orientation="Horizontal">
+
+                            <StackPanel Margin="0 0 60 0" >
+
+                                <TextBlock HorizontalAlignment="Center" Margin="5" Text="All modules" FontWeight="Bold"/>
+                                <ListBox BorderThickness="1"   Height="210"  SelectedItem="{Binding SelectedMod}"  ItemsSource="{Binding GetModules}"  Width="215">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Style="{StaticResource border_style_1}">
+                                                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Width="190" >
+                                                    <TextBlock Width="80" Margin="10" Text="{Binding Code}"/>
+                                                    <TextBlock Width="100" Margin="10" Text="{Binding Name}"/>
+
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <Button Style="{StaticResource ButtonStyle_Add}" Content="Add Module" Margin="10"  Command="{Binding regmodCommand}" />
+
+                            </StackPanel>
+                            <StackPanel Margin="60 0 0 0">
+                                <TextBlock Margin="5" HorizontalAlignment="Center" Text="Registed modules" FontWeight="Bold"/>
+                                <ListBox BorderThickness="1" Height="150"  SelectedItem="{Binding SelectedMod2}"  ItemsSource="{Binding GetRegModules}"  Width="215">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Style="{StaticResource border_style_1}">
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="190" >
+                                                    <TextBlock Width="80" Margin="10" Text="{Binding Code}"/>
+                                                    <TextBlock Width="100" Margin="10" Text="{Binding Name}"/>
+
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <Button Style="{StaticResource ButtonStyle_Add}" Content="Remove Module" Margin="10"  Command="{Binding RemoveRegModCommand}" />
+                                <StackPanel>
+                                    <TextBox Style="{StaticResource texbox_style_1}" Text="{Binding Mark}"/>
+                                    <Button Style="{StaticResource ButtonStyle_Add}" Content="Add Grade" Margin="10"  Command="{Binding AddMarksCommand}" />
+
+                                </StackPanel>
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+
+                    </StackPanel>
+                   
+
+
+                </StackPanel>
+                <StackPanel  Visibility="{Binding Ismodule,Converter={StaticResource BooleanToVisibilityConverter}}" x:Name="Module"  HorizontalAlignment="Center" Orientation="Vertical">
+                    <TextBlock Style="{StaticResource texblock_style_1}" Text="Module code" Width="150"/>
+                    <TextBox Style="{StaticResource texbox_style_1}" Text="{Binding Getcode}" />
+
+                    <TextBlock Style="{StaticResource texblock_style_1}" Text="Module Name" Width="150"/>
+                    <TextBox Style="{StaticResource texbox_style_1}" Text="{Binding GetModuleName}" />
+                    <TextBlock Style="{StaticResource texblock_style_1}" Text="Credit" Width="150"/>
+                    <TextBox Style="{StaticResource texbox_style_1}" Text="{Binding Getcredit}" />
+
+
+                    <Button Style="{StaticResource ButtonStyle_Add}" Content="Save" Margin="10" Command="{Binding AddModuleCommand}" />
+
+
+                </StackPanel>
+            </StackPanel>
+
+
+        </Grid>
+    </Border>
+   
+</Window>

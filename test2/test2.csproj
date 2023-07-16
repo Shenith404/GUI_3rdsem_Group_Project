@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\1.png" />
+    <None Remove="Images\81341.png" />
+    <None Remove="Images\Add.png" />
+    <None Remove="Images\black-close-icon-3.png" />
+    <None Remove="Images\c.jpg" />
+    <None Remove="Images\Edit.png" />
+    <None Remove="Images\email.png" />
+    <None Remove="Images\fb.png" />
+    <None Remove="Images\g.png" />
+    <None Remove="Images\google.png" />
+    <None Remove="Images\in.png" />
+    <None Remove="Images\linkedin.png" />
+    <None Remove="Images\lock.png" />
+    <None Remove="Images\new-linkedin-logo-white-black-png.png" />
+    <None Remove="Images\png-clipart-chrome-icon-blue-black-mkii-chromeblacksolo-google-chromecast-thumbnail.png" />
+    <None Remove="Images\pw.png" />
+    <None Remove="Images\un.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0-preview2" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.2.23128.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0-preview.2.23128.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0-preview.2.23128.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0-preview.2.23128.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\1.png" />
+    <Resource Include="Images\81341.png" />
+    <Resource Include="Images\Add.png" />
+    <Resource Include="Images\black-close-icon-3.png" />
+    <Resource Include="Images\c.jpg" />
+    <Resource Include="Images\Edit.png" />
+    <Resource Include="Images\email.png" />
+    <Resource Include="Images\fb.png" />
+    <Resource Include="Images\g.png" />
+    <Resource Include="Images\google.png" />
+    <Resource Include="Images\in.png" />
+    <Resource Include="Images\linkedin.png" />
+    <Resource Include="Images\lock.png" />
+    <Resource Include="Images\new-linkedin-logo-white-black-png.png" />
+    <Resource Include="Images\png-clipart-chrome-icon-blue-black-mkii-chromeblacksolo-google-chromecast-thumbnail.png" />
+    <Resource Include="Images\pw.png" />
+    <Resource Include="Images\un.png" />
+  </ItemGroup>
+
+</Project>
